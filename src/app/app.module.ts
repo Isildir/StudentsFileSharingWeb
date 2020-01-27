@@ -12,6 +12,7 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AngularMaterialModule  } from './angular.material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
    declarations: [
@@ -28,7 +29,8 @@ import { AngularMaterialModule  } from './angular.material.module';
    imports: [
       BrowserModule,
       AppRoutingModule,
-      AngularMaterialModule
+      AngularMaterialModule,
+      ReactiveFormsModule
    ],
    providers: [],
    bootstrap: [

@@ -2,4 +2,19 @@
   <h1>Logowanko :O</h1>
   
   <button mat-raised-button [routerLink]="['/group-select']">Oszukany przycisk</button>
+
+  <form [formGroup]="loggingForm" (ngSubmit)="onSubmit()">
+    <label>
+      Login:
+      <input type="text" formControlName="login" required>
+    </label>
+    <label>
+      Password:
+      <input type="password" formControlName="password" required>
+    </label>
+    <button type="submit" [disabled]="!loggingForm.valid">Submit</button>
+  </form>
+  <p>Form login: {{ loggingForm.value['login'] }}</p>
+  <p>Form password: {{ loggingForm.value['password'] }}</p>
+  <p>Form Status: {{ loggingForm.status }}</p>
 </div>
