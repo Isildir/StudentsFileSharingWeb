@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupPost } from "../interfaces/post.component";
 
 @Component({
   selector: 'app-main-group-page',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainGroupPageComponent implements OnInit {
 
-  constructor() { }
+  private posts = Array<GroupPost>();
+
+  constructor() 
+  {
+    this.posts.push({author: "Ja", content: "Tu jest dużo tekstu"});
+    this.posts.push({author: "No nie ja", content: "No a tu mało"});
+  }
 
   ngOnInit() {
   }
-
 }

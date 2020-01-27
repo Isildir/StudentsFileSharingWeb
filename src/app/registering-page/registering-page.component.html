@@ -1,3 +1,23 @@
 <div style="text-align:center">
   <h1>Rejestrowanko :O</h1>
+  
+  <form [formGroup]="registeringForm" (ngSubmit)="onSubmit()">
+    <label>
+      Login:
+      <input type="text" formControlName="login" required>
+    </label>
+    <label>
+      Password:
+      <input type="email" formControlName="email">
+    </label>
+    <label>
+      Password:
+      <input type="password" formControlName="password" required>
+    </label>
+    <button type="submit" [disabled]="!registeringForm.valid">Submit</button>
+  </form>
+  <p>Form login: {{ registeringForm.value['login'] }}</p>
+  <p>Form email: {{ registeringForm.value['email'] }}</p>
+  <p>Form password: {{ registeringForm.value['password'] }}</p>
+  <p>Form Status: {{ registeringForm.status }}</p>
 </div>

@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AngularMaterialModule  } from './angular.material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GroupPostComponent } from "./group-post/group-post.component";
 
 @NgModule({
    declarations: [
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       GroupSelectPageComponent,
       StartingPageComponent,
       HeaderComponent,
-      FooterComponent
+      FooterComponent,
+      GroupPostComponent
    ],
    imports: [
       BrowserModule,
