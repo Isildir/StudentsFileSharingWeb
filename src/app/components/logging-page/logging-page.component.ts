@@ -12,17 +12,15 @@ export class LoggingPageComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
-
   loggingForm = new FormGroup({
     login: new FormControl(''),
     password: new FormControl(''),
   });
 
-  onSubmit()
-  {
-    this.router.navigate(['/group-select']);
-    console.log(this.loggingForm.value);
+  ngOnInit() {
+  }
+
+  onSubmit() {
+    this.router.navigate(['/group']);
   }
 }

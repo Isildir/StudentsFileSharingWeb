@@ -1,0 +1,14 @@
+#group-main-page-wrapper {
+    display: flex;
+}
+
+#group-main-page-right-menu {
+    display: block;
+    width: 250px;
+    border-left: gray;
+    border-left-width: 5px;
+}
+
+#posts-wrapper {
+    width: auto;
+}

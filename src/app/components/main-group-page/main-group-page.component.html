@@ -1,0 +1,16 @@
+<div style="text-align:center">
+  <h1>Brawo, dotarłeś do celu, prowadził się Krzysztof Hołowczyc</h1>
+  <div id="group-main-page-wrapper">
+    <app-navigation></app-navigation>
+    <div id="posts-wrapper">
+      <h1>Posty:</h1>
+      <div *ngFor="let post of posts">
+        <app-group-post [author]="post.author" [content]="post.content"></app-group-post>
+      </div>
+    </div>
+    <div id="group-main-page-right-menu">
+      <app-new-group-post-form></app-new-group-post-form>
+      <app-files-manager></app-files-manager>
+    </div>
+  </div>
+</div>

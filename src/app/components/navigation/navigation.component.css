@@ -1,0 +1,9 @@
+#navigation-wrapper {
+    width: 150px;
+    border-radius: 8%;
+    border-width: 5px;
+    border-color: gray;
+    border-style: groove;
+    padding: 10px 25px 10px 25px;
+    margin: 10px;
+}

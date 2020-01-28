@@ -1,19 +1,20 @@
+import { NewGroupPostFormComponent } from './components/new-group-post-form/new-group-post-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoggingPageComponent } from './logging-page/logging-page.component';
-import { RegisteringPageComponent } from './registering-page/registering-page.component';
-import { MainGroupPageComponent } from './main-group-page/main-group-page.component';
-import { FilesPageComponent } from './files-page/files-page.component';
-import { GroupSelectPageComponent } from './group-select-page/group-select-page.component';
-import { StartingPageComponent } from './starting-page/starting-page.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { LoggingPageComponent } from './components/logging-page/logging-page.component';
+import { RegisteringPageComponent } from './components/registering-page/registering-page.component';
+import { MainGroupPageComponent } from './components/main-group-page/main-group-page.component';
+import { StartingPageComponent } from './components/starting-page/starting-page.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { GroupPostComponent } from './components/group-post/group-post.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 import { AngularMaterialModule  } from './angular.material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GroupPostComponent } from "./group-post/group-post.component";
+import { FilesManagerComponent } from './components/files-manager/files-manager.component';
 
 @NgModule({
    declarations: [
@@ -21,12 +22,13 @@ import { GroupPostComponent } from "./group-post/group-post.component";
       LoggingPageComponent,
       RegisteringPageComponent,
       MainGroupPageComponent,
-      FilesPageComponent,
-      GroupSelectPageComponent,
       StartingPageComponent,
       HeaderComponent,
       FooterComponent,
-      GroupPostComponent
+      GroupPostComponent,
+      NavigationComponent,
+      FilesManagerComponent,
+      NewGroupPostFormComponent
    ],
    imports: [
       BrowserModule,

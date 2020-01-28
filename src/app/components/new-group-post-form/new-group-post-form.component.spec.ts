@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { GroupSelectPageComponent } from './group-select-page.component';
+import { NewGroupPostFormComponent } from './new-group-post-form.component';
 
-describe('GroupSelectPageComponent', () => {
-  let component: GroupSelectPageComponent;
-  let fixture: ComponentFixture<GroupSelectPageComponent>;
+describe('NewGroupPostFormComponent', () => {
+  let component: NewGroupPostFormComponent;
+  let fixture: ComponentFixture<NewGroupPostFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GroupSelectPageComponent ]
+      declarations: [ NewGroupPostFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GroupSelectPageComponent);
+    fixture = TestBed.createComponent(NewGroupPostFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

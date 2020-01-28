@@ -11,18 +11,16 @@ export class RegisteringPageComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
-
   registeringForm = new FormGroup({
     login: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl('')
   });
 
-  onSubmit()
-  {
+  ngOnInit() {
+  }
+
+  onSubmit() {
     this.router.navigate(['/logging']);
-    console.log(this.registeringForm.value);
   }
 }

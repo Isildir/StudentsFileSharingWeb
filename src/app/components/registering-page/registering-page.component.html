@@ -1,6 +1,5 @@
 <div style="text-align:center">
-  <h1>Rejestrowanko :O</h1>
-  
+  <h1>Formularz rejestracji</h1>  
   <form [formGroup]="registeringForm" (ngSubmit)="onSubmit()">
     <label>
       Login:
@@ -16,8 +15,4 @@
     </label>
     <button type="submit" [disabled]="!registeringForm.valid">Submit</button>
   </form>
-  <p>Form login: {{ registeringForm.value['login'] }}</p>
-  <p>Form email: {{ registeringForm.value['email'] }}</p>
-  <p>Form password: {{ registeringForm.value['password'] }}</p>
-  <p>Form Status: {{ registeringForm.status }}</p>
 </div>

@@ -1,0 +1,14 @@
+<div id="new-post-wrapper">
+  <h1>Dodawanie nowego posta</h1>  
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <label>
+      Tytuł:
+      <input type="text" formControlName="title" required>
+    </label>
+    <label>
+      Treść:
+      <input type="text" formControlName="content">
+    </label>
+    <button type="submit" [disabled]="!postForm.valid">Submit</button>
+  </form>
+</div>
