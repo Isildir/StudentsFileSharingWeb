@@ -1,8 +1,40 @@
 #new-post-wrapper {
-    border-radius: 8%;
-    border-width: 5px;
-    border-color: gray;
-    border-style: groove;
-    padding: 10px 25px 10px 25px;
-    margin: 10px;
+  border: 1px solid rgba(222, 222, 222, 0.4);
+  padding: 20px;
+  margin: 10px;
+}
+
+.new-post-wrapper__header {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.new-post-wrapper__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-post-wrapper__label {
+  font-weight: 500;
+}
+
+.new-post-wrapper__input {
+  width: 100%;
+  margin: 5px 0;
+  border: 1px solid rgba(222, 222, 222, 0.4);
+}
+
+.new-post-wrapper__input--textarea {
+  min-height: 100px;
+}
+
+.new-post-wrapper__submit-button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  background: #673ab7;
+  border: none;
+  color: white;
+  font-weight: 400;
 }

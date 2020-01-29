@@ -1,26 +1,36 @@
 #material-header {
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#material-header a{
-    text-decoration: none;
+#material-header a {
+  text-decoration: none;
 }
 
 #login-button {
-    margin-right: 20px;
+  margin-right: 20px;
+  background: #673ab7;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #register-button {
-    margin-right: 20px;
+  margin-right: 20px;
+  border: 2px solid #673ab7;
+  background: none;
+  color: #673ab7;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #app-icon {
-    font-size: 32px;
-    display: flex;
-    margin-left: 20px;
-    width: auto;
-    height: auto;
+  font-size: 32px;
+  display: flex;
+  margin-left: 20px;
+  width: auto;
+  height: auto;
 }

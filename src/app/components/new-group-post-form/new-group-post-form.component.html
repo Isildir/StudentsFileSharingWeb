@@ -1,14 +1,33 @@
-<div id="new-post-wrapper">
-  <h1>Dodawanie nowego posta</h1>  
-  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-    <label>
+<h2 class="new-post-wrapper__header">Dodawanie nowego posta:</h2>
+<div id="new-post-wrapper" class="new-post-wrapper">
+  <form
+    [formGroup]="postForm"
+    (ngSubmit)="onSubmit()"
+    class="new-post-wrapper__form"
+  >
+    <label class="new-post-wrapper__label">
       Tytuł:
-      <input type="text" formControlName="title" required>
+      <input
+        type="text"
+        formControlName="title"
+        required
+        class="new-post-wrapper__input"
+      />
     </label>
-    <label>
+    <label class="new-post-wrapper__label">
       Treść:
-      <input type="text" formControlName="content">
+      <input
+        type="text"
+        formControlName="content"
+        class="new-post-wrapper__input new-post-wrapper__input--textarea"
+      />
     </label>
-    <button type="submit" [disabled]="!postForm.valid">Submit</button>
+    <button
+      type="submit"
+      [disabled]="!postForm.valid"
+      class="new-post-wrapper__submit-button"
+    >
+      Submit
+    </button>
   </form>
 </div>

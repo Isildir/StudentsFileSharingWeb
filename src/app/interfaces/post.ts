@@ -1,5 +1,6 @@
-export interface GroupPost
-{
-    author: string;
-    content: string;
+export interface GroupPost {
+  author: string;
+  title: string;
+  content: string;
+  date: string;
 }

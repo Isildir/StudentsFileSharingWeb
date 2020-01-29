@@ -1,4 +1,12 @@
 <div class="post-wrapper">
-  <h1>{{ author }}</h1>
-  <p>{{ content }}</p>
+  <p class="post-wrapper__label">{{ title }}</p>
+  <p class="post-wrapper__author">
+    <mat-icon>person</mat-icon> {{ author }}
+    <span class="post-wrapper__date"
+      >|
+      <mat-icon class="post-wrapper__calendar-icon">calendar_today</mat-icon>
+      {{ date }}
+    </span>
+  </p>
+  <p class="post-wrapper__description">{{ content }}</p>
 </div>
