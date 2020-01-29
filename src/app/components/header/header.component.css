@@ -1,20 +1,11 @@
 #material-header {
     height: 4rem;
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
 #material-header a{
     text-decoration: none;
-}
-
-#login-button {
-    margin-right: 20px;
-}
-
-#register-button {
-    margin-right: 20px;
 }
 
 #app-icon {
@@ -23,4 +14,16 @@
     margin-left: 20px;
     width: auto;
     height: auto;
+}
+
+#login-button,
+#register-button,
+#user-login,
+#active-group-name {
+    margin-right: 20px;
+}
+
+.header-right-side-elements {
+    display: flex;
+    align-items: center;
 }

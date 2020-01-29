@@ -1,0 +1,8 @@
+.group-add-button {
+    font-size: 28px;
+}
+
+.search-bar-group {
+    display: flex;
+    align-items: center;
+}

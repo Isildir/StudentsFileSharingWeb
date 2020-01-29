@@ -2,8 +2,12 @@
   <a [routerLink]="['']">
     <mat-icon id="app-icon">build_border</mat-icon>
   </a>
-  <div>
+  <div class="header-right-side-elements" *ngIf="!userDataService.isUserLogged()">
     <button id="login-button" mat-raised-button [routerLink]="['logging']">Logownie</button>
     <button id="register-button" mat-raised-button [routerLink]="['registering']">Rejestracja</button>
+  </div>
+  <div class="header-right-side-elements" *ngIf="userDataService.isUserLogged()">
+    <a id="active-group-name" [routerLink]="['/group']">{{ mainPageDataService.activeGroupName }}</a>
+    <p id="user-login">Logged as: {{ userDataService.login }}</p>
   </div>
 </mat-toolbar>
