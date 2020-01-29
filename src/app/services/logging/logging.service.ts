@@ -1,3 +1,4 @@
+import { MainPageDataService } from 'src/app/services/main-page-data/main-page-data.service';
 import { Injectable } from '@angular/core';
 import { AppDataService } from '../app-data/app-data.service';
 import { UserDataService } from '../user-data/user-data.service';
@@ -10,7 +11,8 @@ export class LoggingService {
 
   public errorMessage: string;
 
-  constructor(private appDataService: AppDataService, private userDataService: UserDataService, private httpClient: HttpClient) { }
+  constructor(private appDataService: AppDataService, private userDataService: UserDataService,
+              private httpClient: HttpClient, private mainPageDataService: MainPageDataService) { }
 
   async sendLoginRequest(login: string, password: string) {
 
@@ -21,10 +23,10 @@ export class LoggingService {
       const response = await this.httpClient.post(apiAddress, { Login: login, Password: password})
         .toPromise() as { id: number, login: string, name: string, token: string };
 
-      this.userDataService.userId = response.id;
-      this.userDataService.userLogin = response.login;
-      this.userDataService.userName = response.name;
-      this.userDataService.userToken = response.token;
+      this.userDataService.setUserData(response.id, response.login, response.name, response.token);
+
+      await this.mainPageDataService.loadUserData();
+      await this.mainPageDataService.setFilteredGroups('');
 
       return true;
 

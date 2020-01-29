@@ -1,6 +1,8 @@
-import { PostsService } from '../../services/posts/posts.service';
+import { Router } from '@angular/router';
+import { UserDataService } from './../../services/user-data/user-data.service';
 import { Component, OnInit } from '@angular/core';
 import { GroupPost } from '../../interfaces/post';
+import { MainPageDataService } from 'src/app/services/main-page-data/main-page-data.service';
 
 @Component({
   selector: 'app-main-group-page',
@@ -9,10 +11,15 @@ import { GroupPost } from '../../interfaces/post';
 })
 export class MainGroupPageComponent implements OnInit {
 
-  private posts = Array<GroupPost>();
+  private posts: Array<GroupPost>;
 
-  constructor(postsService: PostsService) {
-    this.posts = postsService.getServices();
+  constructor(private mainPageDataService: MainPageDataService, private userDataService: UserDataService, private router: Router) {
+
+    if (!userDataService.isUserLogged()) {
+      this.router.navigate(['/logging']);
+    }
+
+    this.posts = mainPageDataService.posts;
   }
 
   ngOnInit() {

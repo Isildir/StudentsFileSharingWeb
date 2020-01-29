@@ -1,14 +1,21 @@
 #material-header {
+<<<<<<< HEAD
   height: 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+=======
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+>>>>>>> f1d3b5bdc99952229bd9edc4e211dbc88f10c54e
 }
 
 #material-header a {
   text-decoration: none;
 }
 
+<<<<<<< HEAD
 #login-button {
   margin-right: 20px;
   background: #673ab7;
@@ -34,3 +41,24 @@
   width: auto;
   height: auto;
 }
+=======
+#app-icon {
+    font-size: 32px;
+    display: flex;
+    margin-left: 20px;
+    width: auto;
+    height: auto;
+}
+
+#login-button,
+#register-button,
+#user-login,
+#active-group-name {
+    margin-right: 20px;
+}
+
+.header-right-side-elements {
+    display: flex;
+    align-items: center;
+}
+>>>>>>> f1d3b5bdc99952229bd9edc4e211dbc88f10c54e

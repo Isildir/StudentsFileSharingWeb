@@ -1,3 +1,4 @@
+import { GroupSearchBarComponent } from './components/group-search-bar/group-search-bar/group-search-bar.component';
 import { NewGroupPostFormComponent } from './components/new-group-post-form/new-group-post-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { GroupPostComponent } from './components/group-post/group-post.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AngularMaterialModule  } from './angular.material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilesManagerComponent } from './components/files-manager/files-manager.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -29,14 +30,16 @@ import { HttpClientModule } from '@angular/common/http';
       GroupPostComponent,
       NavigationComponent,
       FilesManagerComponent,
-      NewGroupPostFormComponent
+      NewGroupPostFormComponent,
+      GroupSearchBarComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
       AngularMaterialModule,
       ReactiveFormsModule,
-      HttpClientModule
+      HttpClientModule,
+      FormsModule
    ],
    providers: [],
    bootstrap: [

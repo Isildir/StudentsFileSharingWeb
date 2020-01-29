@@ -1,4 +1,4 @@
-import { GroupsService } from './../../services/groups/groups.service';
+import { MainPageDataService } from './../../services/main-page-data/main-page-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'src/app/interfaces/group';
 
@@ -11,11 +11,10 @@ export class NavigationComponent implements OnInit {
 
   private groups = Array<Group>();
 
-  constructor(groupsService: GroupsService) {
-    this.groups = groupsService.getGroups();
+  constructor(private mainPageDataService: MainPageDataService) {
+    this.groups = mainPageDataService.userGroups;
    }
 
   ngOnInit() {
   }
-
 }
