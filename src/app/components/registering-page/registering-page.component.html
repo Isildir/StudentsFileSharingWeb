@@ -6,8 +6,8 @@
       <input type="text" formControlName="login" required>
     </label>
     <label>
-      Password:
-      <input type="email" formControlName="email">
+      Name:
+      <input type="email" formControlName="name">
     </label>
     <label>
       Password:
@@ -15,4 +15,5 @@
     </label>
     <button type="submit" [disabled]="!registeringForm.valid">Submit</button>
   </form>
+  <p *ngIf='errorMessage.length > 0'>{{ errorMessage }}</p>
 </div>

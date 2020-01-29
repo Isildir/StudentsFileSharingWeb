@@ -11,4 +11,5 @@
     </label>
     <button type="submit" [disabled]="!loggingForm.valid">Submit</button>
   </form>
+  <p *ngIf='errorMessage.length > 0'>{{ errorMessage }}</p>
 </div>

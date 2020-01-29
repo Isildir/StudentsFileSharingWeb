@@ -1,3 +1,4 @@
+import { LoggingService } from './../../services/logging/logging.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 
 export class LoggingPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  errorMessage = '';
+
+  constructor(private router: Router, private loggingService: LoggingService) { }
 
   loggingForm = new FormGroup({
     login: new FormControl(''),
@@ -20,7 +23,14 @@ export class LoggingPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.router.navigate(['/group']);
+  async onSubmit() {
+
+    const result = await this.loggingService.sendLoginRequest(this.loggingForm.value.login, this.loggingForm.value.password);
+
+    if (result) {
+      this.router.navigate(['/group']);
+    } else {
+      this.errorMessage = this.loggingService.errorMessage;
+    }
   }
 }

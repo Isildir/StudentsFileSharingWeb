@@ -15,6 +15,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { AngularMaterialModule  } from './angular.material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilesManagerComponent } from './components/files-manager/files-manager.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
    declarations: [
@@ -34,7 +35,8 @@ import { FilesManagerComponent } from './components/files-manager/files-manager.
       BrowserModule,
       AppRoutingModule,
       AngularMaterialModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      HttpClientModule
    ],
    providers: [],
    bootstrap: [

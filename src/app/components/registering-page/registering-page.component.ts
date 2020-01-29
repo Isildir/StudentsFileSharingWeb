@@ -1,3 +1,4 @@
+import { RegisteringService } from './../../services/registering/registering.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,18 +10,28 @@ import { Router } from '@angular/router';
 })
 export class RegisteringPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  errorMessage = '';
+
+  constructor(private router: Router, private registeringService: RegisteringService) { }
 
   registeringForm = new FormGroup({
     login: new FormControl(''),
-    email: new FormControl(''),
+    name: new FormControl(''),
     password: new FormControl('')
   });
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.router.navigate(['/logging']);
+  async onSubmit() {
+
+    const result = await this.registeringService
+      .sendLoginRequest(this.registeringForm.value.login, this.registeringForm.value.name, this.registeringForm.value.password);
+
+    if (result) {
+      this.router.navigate(['/logging']);
+    } else {
+      this.errorMessage = this.registeringService.errorMessage;
+    }
   }
 }
