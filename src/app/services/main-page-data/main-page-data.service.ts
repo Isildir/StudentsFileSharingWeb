@@ -57,6 +57,23 @@ export class MainPageDataService {
 
   async setGroupData() {
     // Wczytywanie danych z api
+    this.groupPosts.push({
+      author: 'Anna Nowak',
+      title: 'Egzamin zaliczeniowy ISK',
+      date: '29.01.2020',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
+    });
+    this.groupPosts.push({
+      author: 'Aloizy Eustachy Bąk',
+      title: 'Zadanie domowe z \'Metod numerycznych\'',
+      date: '20.01.2020',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    });
   }
 
   async setFilteredGroups(filter: string) {
@@ -73,7 +90,7 @@ export class MainPageDataService {
         console.log(values);
 
         this.downloadedGroups = values.filter(a => this.groups.find(b => b.id === a.id) === undefined);
-        
+
         console.log(this.downloadedGroups);
       } catch (error) {
       }

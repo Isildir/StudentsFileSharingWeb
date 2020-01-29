@@ -22,7 +22,7 @@
 #posts-wrapper {
   width: 60%;
   height: 100%;
-  //overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .news-posts__header {
