@@ -7,3 +7,7 @@
     padding: 10px 25px 10px 25px;
     margin: 10px;
 }
+
+#active-group-button {
+    background-color: indigo;
+}

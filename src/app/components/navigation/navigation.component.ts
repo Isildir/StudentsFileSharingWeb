@@ -9,12 +9,17 @@ import { Group } from 'src/app/interfaces/group';
 })
 export class NavigationComponent implements OnInit {
 
-  private groups = Array<Group>();
-
   constructor(private mainPageDataService: MainPageDataService) {
-    this.groups = mainPageDataService.userGroups;
    }
 
   ngOnInit() {
+  }
+
+  async onGroupChange(id: number) {
+    await this.mainPageDataService.setActiveGroup(id);
+  }
+
+  async leaveGroup(id: number) {
+    await this.mainPageDataService.leaveGroup(id);
   }
 }

@@ -11,15 +11,11 @@ import { MainPageDataService } from 'src/app/services/main-page-data/main-page-d
 })
 export class MainGroupPageComponent implements OnInit {
 
-  private posts: Array<GroupPost>;
-
   constructor(private mainPageDataService: MainPageDataService, private userDataService: UserDataService, private router: Router) {
 
     if (!userDataService.isUserLogged()) {
       this.router.navigate(['/logging']);
     }
-
-    this.posts = mainPageDataService.posts;
   }
 
   ngOnInit() {

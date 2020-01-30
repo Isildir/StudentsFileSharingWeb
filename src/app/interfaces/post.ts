@@ -1,6 +1,11 @@
+import { PostComment } from './comment';
+
 export interface GroupPost {
-  author: string;
+  id: number;
+  authorName: string;
   title: string;
   content: string;
-  date: string;
+  dateAdded: Date;
+  isAuthor: boolean;
+  comments: PostComment[];
 }

@@ -7,7 +7,8 @@
     <button id="register-button" mat-raised-button [routerLink]="['registering']">Rejestracja</button>
   </div>
   <div class="header-right-side-elements" *ngIf="userDataService.isUserLogged()">
-    <a id="active-group-name" [routerLink]="['/group']">{{ mainPageDataService.activeGroupName }}</a>
+    <a id="active-group-name" (click)="moveToGroupView()">Grupa: {{ mainPageDataService.activeGroupName }}</a>
     <p id="user-login">Logged as: {{ userDataService.login }}</p>
+    <button id="logout-button" mat-raised-button (click)="onLogout()">Wyloguj</button>
   </div>
 </mat-toolbar>

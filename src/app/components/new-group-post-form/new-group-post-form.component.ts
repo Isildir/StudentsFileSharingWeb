@@ -1,3 +1,4 @@
+import { MainPageDataService } from 'src/app/services/main-page-data/main-page-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -8,7 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class NewGroupPostFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mainPageDataService: MainPageDataService) { }
 
   postForm = new FormGroup({
     title: new FormControl(''),
@@ -18,6 +19,11 @@ export class NewGroupPostFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  async onSubmit() {
+    const result = await this.mainPageDataService.sendPost(this.postForm.value.title, this.postForm.value.content);
+
+    if(result) {
+      this.postForm.reset();
+    }
   }
 }

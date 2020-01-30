@@ -1,12 +1,21 @@
 <div class="post-wrapper">
-  <p class="post-wrapper__label">{{ title }}</p>
+  <p class="post-wrapper__label">{{ postData.title }}</p>
   <p class="post-wrapper__author">
-    <mat-icon>person</mat-icon> {{ author }}
+    <mat-icon>person</mat-icon> {{ postData.authorName }}
     <span class="post-wrapper__date"
       >|
       <mat-icon class="post-wrapper__calendar-icon">calendar_today</mat-icon>
-      {{ date }}
+      {{ postData.dateAdded | date:'medium' }}
     </span>
+    <a *ngIf="postData.isAuthor" (click)="onPostDelete()"><mat-icon>delete_forever</mat-icon></a>
   </p>
   <p class="post-wrapper__description">{{ content }}</p>
+  <div class="post-comments-wrapper" *ngIf="postData.comments !== undefined && postData.comments !== null && postData.comments.length > 0">
+    <div *ngFor="let comment of postData.comments">
+      <p>{{ comment.authorName }}</p>
+      <p>{{ comment.content }}</p>
+      <p>{{ comment.dateAdded | date:'medium' }}</p>
+      <a *ngIf="comment.isAuthor" (click)="onCommentDelete(comment.id)"><mat-icon>delete_forever</mat-icon></a>
+    </div>
+  </div>
 </div>

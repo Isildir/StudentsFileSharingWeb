@@ -3,12 +3,9 @@
     <app-navigation></app-navigation>
     <div id="posts-wrapper">
       <h1 class="news-posts__header">Najnowsze posty:</h1>
-      <div *ngFor="let post of posts">
+      <div *ngFor="let post of mainPageDataService.posts">
         <app-group-post
-          [title]="post.title"
-          [author]="post.author"
-          [content]="post.content"
-          [date]="post.date"
+          [postData]="post"
         ></app-group-post>
       </div>
     </div>
