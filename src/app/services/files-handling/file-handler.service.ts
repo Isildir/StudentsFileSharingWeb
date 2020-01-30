@@ -13,26 +13,44 @@ export class FileHandlerService {
 constructor(private appDataService: AppDataService, private userDataService: UserDataService, 
             private httpClient: HttpClient, private mainPageDataService: MainPageDataService) { }
 
-async sendFile(file: File) {
-  console.log(file);
+  async sendFile(file: File) {
+    console.log(file);
 
-  const formData = new FormData();
+    const formData = new FormData();
 
-  formData.append(`file`, file, file.name);
+    formData.append(`file`, file, file.name);
 
-  const apiAddress = `${this.appDataService.getApiAddress()}/api/groups/UploadFile/${this.mainPageDataService.activeGroup}`;
+    const apiAddress = `${this.appDataService.getApiAddress()}/api/Files/UploadFile/${this.mainPageDataService.activeGroup}`;
 
-  try {
+    try {
 
-    const requestOptions = { headers: { Authorization: `Bearer ${this.userDataService.userToken}` },  };
+      const requestOptions = { headers: { Authorization: `Bearer ${this.userDataService.userToken}` },  };
 
-    const response = await this.httpClient.post(apiAddress, formData, requestOptions).toPromise() as FileAddModel;
+      const response = await this.httpClient.post(apiAddress, formData, requestOptions).toPromise() as FileAddModel;
 
-    return response;
+      return response;
     } catch (error) {
       console.log(error);
 
       return { errorMessage: error.error} as FileAddModel;
+    }
+  }
+
+  async deleteFile(id: number) {
+
+    const apiAddress = `${this.appDataService.getApiAddress()}/api/Files/${id}`;
+
+    try {
+
+      const requestOptions = { headers: { Authorization: `Bearer ${this.userDataService.userToken}` },  };
+
+      await this.httpClient.delete(apiAddress, requestOptions).toPromise();
+
+      return true;
+    } catch (error) {
+      console.log(error);
+
+      return false;
     }
   }
 }

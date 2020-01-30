@@ -22,9 +22,17 @@ export class FilesManagerComponent implements OnInit {
     await this.prepareFilesList(files);
   }
 
-  deleteFile(id: number) {
-    //this.files.splice(index, 1);
-    //no troche więcej roboty
+  async deleteFile(id: number) {
+    const result = await this.fileHandlerService.deleteFile(id);
+
+    if (result) {
+
+      const index: number = this.addedFiles.indexOf(this.addedFiles.find(a => a.id === id), 0);
+
+      if (index > -1) {
+        this.addedFiles.splice(index, 1);
+      }
+    }
   }
 
   async prepareFilesList(files: Array<any>) {
@@ -48,11 +56,6 @@ export class FilesManagerComponent implements OnInit {
     console.log(this.addedFiles);
   }
 
-  /**
-   * format bytes
-   * @param bytes (File size in bytes)
-   * @param decimals (Decimals point)
-   */
   formatBytes(bytes: number, decimals: number) {
     if (bytes === 0) {
       return '0 Bytes';
