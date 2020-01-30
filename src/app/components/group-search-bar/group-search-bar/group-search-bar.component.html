@@ -2,7 +2,7 @@
   <input type="text" [(ngModel)]="filter" (change)="onFilterChange()">
   <ul>
     <div class="search-bar-group" *ngFor="let group of mainPageDataService.filteredGroups">
-      <p>{{ group.name }}}</p>
+      <p>{{ group.name }}</p>
       <a (click)="addGroup(group.id)">
         <mat-icon class="group-add-button">add</mat-icon>
       </a>

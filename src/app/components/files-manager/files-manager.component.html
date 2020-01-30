@@ -1,9 +1,9 @@
-<h2 class="files-manager-wrapper__header">Pliki:</h2>
+<h2 class="files-manager-wrapper__header">Pliki (.pdf, .docx, .png, .jpeg):</h2>
 <div
   id="files-manager-wrapper"
   class="files-manager-wrapper"
   appDragAndDrop
-  (fileDropped)="onFileDropped($event)"
+  (fileDropped)="onFileDropped($event)" 
 >
   <input
     type="file"
@@ -24,20 +24,21 @@
     >Browse for file</label
   >
   <div class="files-list">
-    <div class="single-file" *ngFor="let file of files; let i = index">
+    <div class="single-file" *ngFor="let file of addedFiles">
       <div class="info">
         <h4 class="name">
-          {{ file?.name }}
+          {{ file.fileName }}
         </h4>
         <p class="size">
-          {{ formatBytes(file?.size) }}
+          {{ formatBytes(file.size) }}
         </p>
+        <p *ngIf="file.errorMessage !== undefined">{{ file.errorMessage }}</p>
       </div>
-      <button
+      <button *ngIf="file.uploaded"
         class="delete"
         width="20px"
         alt="file"
-        (click)="deleteFile(i)"
+        (click)="deleteFile(file.id)"
       ></button>
     </div>
   </div>

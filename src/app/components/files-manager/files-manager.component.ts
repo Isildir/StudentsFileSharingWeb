@@ -1,56 +1,51 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import { FileHandlerService } from 'src/app/services/files-handling/file-handler.service';
+import { FileAddModel } from 'src/app/interfaces/file-add-model';
 
 @Component({
-  selector: "app-files-manager",
-  templateUrl: "./files-manager.component.html",
-  styleUrls: ["./files-manager.component.css"]
+  selector: 'app-files-manager',
+  templateUrl: './files-manager.component.html',
+  styleUrls: ['./files-manager.component.css']
 })
 export class FilesManagerComponent implements OnInit {
-  files: any[] = [];
 
-  onFileDropped($event) {
-    this.prepareFilesList($event);
+  private addedFiles = Array<FileAddModel>();
+
+  async onFileDropped($event: any[]) {
+    await this.prepareFilesList($event);
   }
 
-  fileBrowseHandler(files) {
-    this.prepareFilesList(files);
+  constructor(private fileHandlerService: FileHandlerService) {
   }
 
-  /**
-   * Delete file from files list
-   * @param index (File index)
-   */
-  deleteFile(index: number) {
-    this.files.splice(index, 1);
+  async fileBrowseHandler(files: any[]) {
+    await this.prepareFilesList(files);
   }
 
-  uploadFilesSimulator(index: number) {
-    setTimeout(() => {
-      if (index === this.files.length) {
-        return;
-      } else {
-        const progressInterval = setInterval(() => {
-          if (this.files[index].progress === 100) {
-            clearInterval(progressInterval);
-            this.uploadFilesSimulator(index + 1);
-          } else {
-            this.files[index].progress += 5;
-          }
-        }, 200);
-      }
-    }, 1000);
+  deleteFile(id: number) {
+    //this.files.splice(index, 1);
+    //no troche więcej roboty
   }
 
-  /**
-   * Convert Files list to normal array list
-   * @param files (Files List)
-   */
-  prepareFilesList(files: Array<any>) {
+  async prepareFilesList(files: Array<any>) {
     for (const item of files) {
-      item.progress = 0;
-      this.files.push(item);
+
+      const result = await this.fileHandlerService.sendFile(item);
+
+      if (result.id !== undefined) {
+
+        result.uploaded = true;
+        result.size = item.size;
+      } else {
+        result.fileName = item.name;
+        result.uploaded = false;
+        result.size = item.size;
+      }
+
+      this.addedFiles.push(result);
     }
-    this.uploadFilesSimulator(0);
+
+    console.log(this.addedFiles);
   }
 
   /**
@@ -58,15 +53,15 @@ export class FilesManagerComponent implements OnInit {
    * @param bytes (File size in bytes)
    * @param decimals (Decimals point)
    */
-  formatBytes(bytes, decimals) {
+  formatBytes(bytes: number, decimals: number) {
     if (bytes === 0) {
-      return "0 Bytes";
+      return '0 Bytes';
     }
     const k = 1024;
     const dm = decimals <= 0 ? 0 : decimals || 2;
-    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
   ngOnInit() {}
