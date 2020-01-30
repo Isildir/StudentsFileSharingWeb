@@ -4,6 +4,7 @@ import { Group } from 'src/app/interfaces/group';
 import { AppDataService } from '../app-data/app-data.service';
 import { HttpClient } from '@angular/common/http';
 import { UserDataService } from '../user-data/user-data.service';
+import { PostComment } from 'src/app/interfaces/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,26 @@ export class MainPageDataService {
         .toPromise() as GroupPost;
 
       this.groupPosts.push(value);
+
+      return true;
+    } catch (error) {
+      console.log(error);
+
+      return false;
+    }
+  }
+
+  async sendComment(postId: number, content: string) {
+
+    const apiAddress = `${this.appDataService.getApiAddress()}/api/comments`;
+
+    try {
+
+      const requestOptions = { headers: { Authorization: `Bearer ${this.userDataService.userToken}` } };
+
+      const value = await this.httpClient.post(apiAddress, { postId, content }, requestOptions).toPromise() as PostComment;
+
+      this.groupPosts.find(a => a.id === postId).comments.push(value);
 
       return true;
     } catch (error) {

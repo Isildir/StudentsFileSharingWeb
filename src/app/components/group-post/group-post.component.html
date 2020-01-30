@@ -18,4 +18,12 @@
       <a *ngIf="comment.isAuthor" (click)="onCommentDelete(comment.id)"><mat-icon>delete_forever</mat-icon></a>
     </div>
   </div>
+  <div class="post-comment-add">
+    <form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit()">
+      <input type="text" formControlName="content" required>
+      <button type="submit" [disabled]="!commentForm.valid">
+        <mat-icon>mail</mat-icon>
+      </button>
+    </form>
+  </div>
 </div>

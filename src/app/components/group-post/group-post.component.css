@@ -4,6 +4,10 @@
   margin: 10px;
 }
 
+.post-comment-add {
+  display: flex;
+}
+
 .post-wrapper__label {
   font-size: 1.2rem;
   font-weight: 600;

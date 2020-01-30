@@ -22,7 +22,7 @@ export class NewGroupPostFormComponent implements OnInit {
   async onSubmit() {
     const result = await this.mainPageDataService.sendPost(this.postForm.value.title, this.postForm.value.content);
 
-    if(result) {
+    if (result) {
       this.postForm.reset();
     }
   }
