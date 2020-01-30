@@ -9,7 +9,7 @@
     </span>
     <a *ngIf="postData.isAuthor" (click)="onPostDelete()"><mat-icon>delete_forever</mat-icon></a>
   </p>
-  <p class="post-wrapper__description">{{ content }}</p>
+  <p class="post-wrapper__description">{{ postData.content }}</p>
   <div class="post-comments-wrapper" *ngIf="postData.comments !== undefined && postData.comments !== null && postData.comments.length > 0">
     <div *ngFor="let comment of postData.comments">
       <p>{{ comment.authorName }}</p>

@@ -1,6 +1,7 @@
 import { MainPageDataService } from './../../services/main-page-data/main-page-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'src/app/interfaces/group';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-navigation',
@@ -8,6 +9,10 @@ import { Group } from 'src/app/interfaces/group';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+
+  newGroupForm = new FormGroup({
+    name: new FormControl('')
+  });
 
   constructor(private mainPageDataService: MainPageDataService) {
    }
@@ -21,5 +26,11 @@ export class NavigationComponent implements OnInit {
 
   async leaveGroup(id: number) {
     await this.mainPageDataService.leaveGroup(id);
+  }
+
+  async createGroup() {
+    await this.mainPageDataService.createGroup(this.newGroupForm.value.name);
+
+    this.newGroupForm.reset();
   }
 }

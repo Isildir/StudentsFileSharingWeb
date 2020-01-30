@@ -80,6 +80,22 @@ export class MainPageDataService {
     }
   }
 
+  async createGroup(name: string) {
+
+    const apiAddress = `${this.appDataService.getApiAddress()}/api/groups`;
+
+    try {
+
+      const requestOptions = { headers: { Authorization: `Bearer ${this.userDataService.userToken}` } };
+
+      const value = await this.httpClient.post(apiAddress, { name }, requestOptions).toPromise() as Group;
+
+      await this.joinGroup(value.id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async sendComment(postId: number, content: string) {
 
     const apiAddress = `${this.appDataService.getApiAddress()}/api/comments`;
@@ -179,7 +195,7 @@ export class MainPageDataService {
   async joinGroup(id: number) {
     if (this.groups.find(a => a.id === id) === undefined) {
 
-      const apiAddress = `${this.appDataService.getApiAddress()}/api/groups/JoinGroup/${id}`;
+      let apiAddress = `${this.appDataService.getApiAddress()}/api/groups/JoinGroup/${id}`;
 
       try {
 
@@ -187,7 +203,23 @@ export class MainPageDataService {
 
         await this.httpClient.post(apiAddress, { }, requestOptions).toPromise();
 
-        this.groups.push(this.downloadedGroups.find(a => a.id === id));
+        const storedGroup = this.downloadedGroups.find(a => a.id === id);
+
+        if (storedGroup === undefined) {
+
+          apiAddress = `${this.appDataService.getApiAddress()}/api/groups/GetUserGroups`;
+
+          try {
+
+            const groups = await this.httpClient.get(apiAddress, requestOptions).toPromise() as Group[];
+
+            this.groups.push(groups.find(a => a.id === id));
+          } catch (error) {
+            console.log(error);
+          }
+        } else {
+          this.groups.push(storedGroup);
+        }
 
         if (this.activeGroupId === undefined) {
           await this.setActiveGroup(this.groups[0].id);
