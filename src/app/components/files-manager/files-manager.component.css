@@ -4,6 +4,8 @@
   margin: 10px;
   position: relative;
   text-align: center;
+  overflow-y: scroll;
+  height: 200px;
 }
 
 #files-manager-wrapper.fileover {
@@ -47,6 +49,10 @@
   color: white;
   padding: 10px 15px;
   margin-top: 20px;
+}
+
+.files-manager-wrapper .single-file {
+  text-align: left;
 }
 
 @keyframes uploadFile {

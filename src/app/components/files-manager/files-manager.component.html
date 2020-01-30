@@ -10,7 +10,7 @@
     #fileDropRef
     id="fileDropRef"
     multiple
-    (change)="fileBriwseHandler(Sevent.target.files)"
+    (change)="fileBrowseHandler($event.target.files)"
     class="files-manager-wrapper__input"
   />
   <mat-icon class="files-manager-wrapper__icon">add_circle_outline</mat-icon>
@@ -23,22 +23,22 @@
   <label for="fileDropRef" class="files-manager-wrapper__button"
     >Browse for file</label
   >
-</div>
-<div class="files-list">
-  <div class="single-file" *ngFor="let file of files; let i = index">
-    <div class="info">
-      <h4 class="name">
-        {{ file?.name }}
-      </h4>
-      <p class="size">
-        {{ formatBytes(file?.size) }}
-      </p>
+  <div class="files-list">
+    <div class="single-file" *ngFor="let file of files; let i = index">
+      <div class="info">
+        <h4 class="name">
+          {{ file?.name }}
+        </h4>
+        <p class="size">
+          {{ formatBytes(file?.size) }}
+        </p>
+      </div>
+      <button
+        class="delete"
+        width="20px"
+        alt="file"
+        (click)="deleteFile(i)"
+      ></button>
     </div>
-    <button
-      class="delete"
-      width="20px"
-      alt="file"
-      (click)="deleteFile(i)"
-    ></button>
   </div>
 </div>

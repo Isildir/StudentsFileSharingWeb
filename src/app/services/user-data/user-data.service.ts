@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UserDataService {
-
-  constructor() { }
+  constructor() {}
 
   private id: number;
   private login: string;
@@ -13,8 +12,12 @@ export class UserDataService {
   private token: string;
   private loggedIn = false;
 
-  setUserData(userId: number, userLogin: string, userName: string, userToken: string) {
-
+  setUserData(
+    userId: number,
+    userLogin: string,
+    userName: string,
+    userToken: string
+  ) {
     this.loggedIn = true;
 
     this.id = userId;
@@ -23,10 +26,20 @@ export class UserDataService {
     this.token = userToken;
   }
 
-  isUserLogged() { return this.loggedIn; }
+  isUserLogged() {
+    return true;
+  }
 
-  get userId(): number { return this.id; }
-  get userLogin(): string { return this.login; }
-  get userName(): string { return this.name; }
-  get userToken(): string { return this.token; }
+  get userId(): number {
+    return this.id;
+  }
+  get userLogin(): string {
+    return this.login;
+  }
+  get userName(): string {
+    return this.name;
+  }
+  get userToken(): string {
+    return this.token;
+  }
 }

@@ -1,17 +1,17 @@
 #material-header {
-    height: 4rem;
-    display: flex;
-    justify-content: space-between;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header-right-side-elements {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #active-group-name,
 #user-login {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 #material-header a {
