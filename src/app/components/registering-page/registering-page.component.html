@@ -1,19 +1,17 @@
-<div style="text-align:center">
-  <h1>Formularz rejestracji</h1>  
-  <form [formGroup]="registeringForm" (ngSubmit)="onSubmit()">
-    <label>
-      Login:
-      <input type="text" formControlName="login" required>
+<div class="register-website"></div>
+<div style="text-align:center" class="register-container">
+  <p class="register-container__title">Zarejestruj się</p>  
+  <form [formGroup]="registeringForm" (ngSubmit)="onSubmit()" class="register-container__form">
+    <label class="register-container__label">
+      <mat-icon id="app-icon" class="register-container__icon">person</mat-icon><input type="text" formControlName="login" placeholder="Login" required class="register-container__input">
     </label>
-    <label>
-      Name:
-      <input type="email" formControlName="name">
+    <label class="register-container__label">
+      <mat-icon id="app-icon" class="register-container__icon">person</mat-icon><input type="email" formControlName="name" placeholder="Imię" class="register-container__input">
     </label>
-    <label>
-      Password:
-      <input type="password" formControlName="password" required>
+    <label class="register-container__label">
+      <mat-icon id="app-icon" class="register-container__icon">lock</mat-icon><input type="password" placeholder="Hasło" formControlName="password" required class="register-container__input">
     </label>
-    <button type="submit" [disabled]="!registeringForm.valid">Submit</button>
+    <button type="submit" [disabled]="!registeringForm.valid" class="register-container__submit-button">Zarejestruj się</button>
   </form>
   <p *ngIf='errorMessage.length > 0'>{{ errorMessage }}</p>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileHandlerService } from 'src/app/services/files-handling/file-handler.service';
 import { FileAddModel } from 'src/app/interfaces/file-add-model';
+import { FileGetModel } from 'src/app/interfaces/file-get-model';
 
 @Component({
   selector: 'app-files-manager',
@@ -10,9 +11,22 @@ import { FileAddModel } from 'src/app/interfaces/file-add-model';
 export class FilesManagerComponent implements OnInit {
 
   private addedFiles = Array<FileAddModel>();
+  private fileUploadActive = true;
+  private filesToDownload: Array<FileGetModel>;
 
   async onFileDropped($event: any[]) {
     await this.prepareFilesList($event);
+  }
+
+  onFileUploadButtonClick() {
+    this.fileUploadActive = true;
+  }
+
+  async onFileDownloadButtonClick() {
+
+    this.filesToDownload = await this.fileHandlerService.getFiles();
+
+    this.fileUploadActive = false;
   }
 
   constructor(private fileHandlerService: FileHandlerService) {

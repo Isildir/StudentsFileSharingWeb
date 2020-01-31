@@ -1,15 +1,14 @@
-<div style="text-align:center">
-  <h1>Formularz logowania</h1>
-  <form [formGroup]="loggingForm" (ngSubmit)="onSubmit()">
-    <label>
-      Login:
-      <input type="text" formControlName="login" required>
+<div class="login-website"></div>
+<div style="text-align:center" class="log-in-container">
+  <p class="log-in-container__title">Zaloguj się</p>
+  <form [formGroup]="loggingForm" (ngSubmit)="onSubmit()" class="log-in-container__form">
+      <label class="log-in-container__label"><mat-icon id="app-icon" class="log-in-container__icon">person</mat-icon><input type="text" formControlName="login" placeholder="Login" required class="log-in-container__input">
     </label>
-    <label>
-      Password:
-      <input type="password" formControlName="password" required>
+    <label class="log-in-container__label">
+      <mat-icon id="app-icon" class="log-in-container__icon">lock</mat-icon>
+      <input type="password" placeholder="Hasło" formControlName="password" required class="log-in-container__input">
     </label>
-    <button type="submit" [disabled]="!loggingForm.valid">Submit</button>
+    <button class="log-in-container__submit-button" type="submit" [disabled]="!loggingForm.valid" class="log-in-container__submit-button">Zaloguj</button>
   </form>
   <p *ngIf='errorMessage?.length > 0'>{{ errorMessage }}</p>
 </div>

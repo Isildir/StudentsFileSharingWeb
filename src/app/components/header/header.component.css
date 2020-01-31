@@ -19,7 +19,8 @@
   text-decoration: none;
 }
 
-#login-button {
+#login-button,
+#logout-button {
   margin-right: 20px;
   background: #673ab7;
   color: white;
@@ -27,6 +28,7 @@
   border-radius: 0;
   box-shadow: none;
 }
+
 
 #register-button {
   margin-right: 20px;
@@ -43,4 +45,15 @@
   margin-left: 20px;
   width: auto;
   height: auto;
+}
+
+#active-group-name,
+#user-login {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+#active-group-name span,
+#user-login span {
+  font-weight: 500;
 }

@@ -180,16 +180,23 @@ export class MainPageDataService {
 
   async setFilteredGroups(filter: string) {
 
-      const apiAddress = `${this.appDataService.getApiAddress()}/api/groups?filter=${filter}`;
+    if (filter.length === 0) {
 
-      try {
+      this.downloadedGroups = Array<Group>();
 
-        const requestOptions = { headers: { Authorization: `Bearer ${this.userDataService.userToken}` } };
+      return;
+    }
 
-        this.downloadedGroups = await this.httpClient.get(apiAddress, requestOptions).toPromise() as Group[];
-      } catch (error) {
-        console.log(error);
-      }
+    const apiAddress = `${this.appDataService.getApiAddress()}/api/groups?filter=${filter}`;
+
+    try {
+
+      const requestOptions = { headers: { Authorization: `Bearer ${this.userDataService.userToken}` } };
+
+      this.downloadedGroups = await this.httpClient.get(apiAddress, requestOptions).toPromise() as Group[];
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async joinGroup(id: number) {

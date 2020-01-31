@@ -1,3 +1,4 @@
+import { FileGetModel } from './../../interfaces/file-get-model';
 import { MainPageDataService } from 'src/app/services/main-page-data/main-page-data.service';
 import { HttpClient } from '@angular/common/http';
 import { UserDataService } from './../user-data/user-data.service';
@@ -14,7 +15,6 @@ constructor(private appDataService: AppDataService, private userDataService: Use
             private httpClient: HttpClient, private mainPageDataService: MainPageDataService) { }
 
   async sendFile(file: File) {
-    console.log(file);
 
     const formData = new FormData();
 
@@ -33,6 +33,22 @@ constructor(private appDataService: AppDataService, private userDataService: Use
       console.log(error);
 
       return { errorMessage: error.error} as FileAddModel;
+    }
+  }
+
+  async getFiles() {
+
+    const apiAddress = `${this.appDataService.getApiAddress()}/api/files/${this.mainPageDataService.activeGroup}`;
+
+    try {
+
+      const requestOptions = { headers: { Authorization: `Bearer ${this.userDataService.userToken}` } };
+
+      return await this.httpClient.get(apiAddress, requestOptions).toPromise() as Array<FileGetModel>;
+    } catch (error) {
+      console.log(error);
+
+      return Array<FileGetModel>();
     }
   }
 

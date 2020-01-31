@@ -1,9 +1,10 @@
-<div id="search-bar">
-  <input type="text" [(ngModel)]="filter" (change)="onFilterChange()">
-  <ul>
-    <div class="search-bar-group" *ngFor="let group of mainPageDataService.filteredGroups">
+<div id="search-bar" class="search-bar">
+  <p class="search-bar__header">Szukaj:</p>
+  <input type="text" [(ngModel)]="filter" (change)="onFilterChange()" class="search-bar__input">
+  <ul class="search-bar__list">
+    <div class="search-bar-group search-bar__item" *ngFor="let group of mainPageDataService.filteredGroups">
       <p>{{ group.name }}</p>
-      <a (click)="addGroup(group.id)">
+      <a (click)="addGroup(group.id)" class="search-bar__link">
         <mat-icon class="group-add-button">add</mat-icon>
       </a>
     </div>

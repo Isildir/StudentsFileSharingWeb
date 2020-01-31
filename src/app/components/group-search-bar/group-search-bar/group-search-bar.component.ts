@@ -1,6 +1,5 @@
 import { MainPageDataService } from 'src/app/services/main-page-data/main-page-data.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Group } from 'src/app/interfaces/group';
 
 @Component({
   selector: 'app-group-search-bar',

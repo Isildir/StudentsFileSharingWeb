@@ -7,22 +7,29 @@
       <mat-icon class="post-wrapper__calendar-icon">calendar_today</mat-icon>
       {{ postData.dateAdded | date:'medium' }}
     </span>
-    <a *ngIf="postData.isAuthor" (click)="onPostDelete()"><mat-icon>delete_forever</mat-icon></a>
+    <a *ngIf="postData.isAuthor" (click)="onPostDelete()" class="post-wrapper__delete-link"><mat-icon>delete_forever</mat-icon></a>
   </p>
   <p class="post-wrapper__description">{{ postData.content }}</p>
   <div class="post-comments-wrapper" *ngIf="postData.comments !== undefined && postData.comments !== null && postData.comments.length > 0">
-    <div *ngFor="let comment of postData.comments">
-      <p>{{ comment.authorName }}</p>
-      <p>{{ comment.content }}</p>
-      <p>{{ comment.dateAdded | date:'medium' }}</p>
-      <a *ngIf="comment.isAuthor" (click)="onCommentDelete(comment.id)"><mat-icon>delete_forever</mat-icon></a>
+    <div *ngFor="let comment of postData.comments" class="post-comments-wrapper__item">
+      <p class="post-wrapper__author">
+        <mat-icon>person</mat-icon> {{ comment.authorName }}
+        <span class="post-wrapper__date"
+          >|
+          <mat-icon class="post-wrapper__calendar-icon">calendar_today</mat-icon>
+          {{ comment.dateAdded | date:'medium' }}
+        </span>
+      </p>
+      <p class="post-wrapper__description">{{ comment.content }}</p>
+      <a *ngIf="comment.isAuthor" (click)="onCommentDelete(comment.id)" class="post-wrapper__delete-link"><mat-icon>delete_forever</mat-icon></a>
     </div>
   </div>
   <div class="post-comment-add">
-    <form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit()">
-      <input type="text" formControlName="content" required>
-      <button type="submit" [disabled]="!commentForm.valid">
-        <mat-icon>mail</mat-icon>
+    <p class="post-comment-add__label">Dodaj komentarz:</p>
+    <form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit()" class="post-wrapper__form">
+      <input type="text" formControlName="content" required class="post-wrapper__input">
+      <button type="submit" [disabled]="!commentForm.valid" class="post-wrapper__submit-button">
+        <mat-icon class="post-wrapper__icon">mail</mat-icon>
       </button>
     </form>
   </div>

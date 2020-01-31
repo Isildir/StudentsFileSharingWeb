@@ -1,6 +1,5 @@
 import { MainPageDataService } from './../../services/main-page-data/main-page-data.service';
 import { Component, OnInit } from '@angular/core';
-import { Group } from 'src/app/interfaces/group';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -15,7 +14,7 @@ export class NavigationComponent implements OnInit {
   });
 
   constructor(private mainPageDataService: MainPageDataService) {
-   }
+  }
 
   ngOnInit() {
   }

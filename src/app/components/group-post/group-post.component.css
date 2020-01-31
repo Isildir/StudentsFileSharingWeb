@@ -2,10 +2,12 @@
   border: 1px solid rgba(222, 222, 222, 0.4);
   padding: 20px;
   margin: 10px;
+  position: relative;
 }
 
 .post-comment-add {
   display: flex;
+  flex-direction: column;
 }
 
 .post-wrapper__label {
@@ -34,7 +36,7 @@
 }
 
 .post-wrapper__author .mat-icon {
-  font-size: 0.9rem;
+  font-size: 1rem;
   width: auto;
   height: 100%;
   margin-right: 5px;
@@ -53,4 +55,61 @@
   font-weight: 100;
   line-height: 1.5;
   margin-top: 20px;
+}
+
+.post-wrapper__delete-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.post-wrapper__delete-link:hover {
+  cursor: pointer;
+}
+
+.post-comment-add {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.post-wrapper__form {
+  width: 100%;
+}
+
+.post-wrapper__input {
+  width: 100%;
+  border: 1px solid rgba(222, 222, 222, 0.4);
+  min-height: 50px;
+}
+
+.post-wrapper__submit-button {
+  align-self: flex-end;
+  padding: 5px 20px;
+  background: #673ab7;
+  border: none;
+  color: white;
+  font-weight: 400;
+  float: right;
+  margin-top: 10px;
+}
+
+.post-wrapper__icon,
+.post-comments-wrapper .mat-icon {
+  font-size: 1rem;
+  width: auto;
+  height: auto;
+}
+
+.post-comments-wrapper__item {
+  border: 1px solid rgba(222, 222, 222, 0.4);
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  position: relative;
+  background: #ccc9c912;
+}
+
+.post-comment-add__label {
+  margin-bottom: 10px;
 }
